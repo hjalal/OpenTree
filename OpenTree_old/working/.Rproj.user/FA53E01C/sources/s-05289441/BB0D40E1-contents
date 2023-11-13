@@ -1,0 +1,65 @@
+setwd("/Users/hawre/Downloads/OpenTree-reactiveTree/OpenTree/working")
+source("opentree_functions.R")
+
+
+# ========= RUN =========
+# define a model name
+treeName <- "test1" #placeholdername for model ... use the File commands on OpenTree to create NEW, Open or Save OpenTrees.
+# 1. open the UI and create/modify your tree
+runOpenTreeUI() #runs the OpenTreeUI
+# 2. convert the tree into a summary dataframe
+opentree_df <- create_OpenTree_df(treeName)
+
+# decision tree - Doubilet Example ========
+params = list(pDieBiopsy = 0.004,
+              pSevBiopsy = 0.01,
+              pModBiopsy = 0.03,
+              sensBiopsy = 0.95,
+              specBiopsy = 0.99,
+              pHSE = 0.4, #overall
+              pDieHSE = .7,
+              pSevHSE = .333,
+              pModHSE = .5,
+              fDie = .37,
+              fSev = .2,
+              fMod = .2,
+              pDieNoHSE = .18,
+              pSevNoHSE = .122,
+              pModNoHSE = .139,
+              addProbDie = .004,
+              addProbSev = .01,
+              addProbMod = .02,
+              uDie = 0,
+              uSev = 0.02,
+              uMod = .8,
+              uMld = 1)
+
+evaluate_string(opentree_df$ev_string[1], params)
+
+opentree_df %>% 
+  rowwise() %>% 
+  mutate(ev = evaluate_string(ev_string, params))
+
+
+# Markov model example =======
+treeName <- "test2" #placeholdername for model ... use the File commands on OpenTree to create NEW, Open or Save OpenTrees.
+runOpenTreeUI() #runs the OpenTreeUI
+
+opentree_df <- create_OpenTree_df(treeName)
+
+params = list(p0healthy = 0.9,
+              p0sick = 0.05,
+              pStayHealthy = 0.95,
+              pStayHealthy2 = 0.9,
+              pHealthyToSick = 0.1,
+              pSickToHealthy = 0.25,
+              pSickDie2 = 1 - 0.8 - 0.25,
+              pGetSick = 0.04,
+              pHealthyDie = 0.01,
+              pStaySick = 0.8,
+              pSickDie = 0.2)
+
+m_P <- evaluate_string(opentree_df$P_str, params)
+m_P
+v_s_init <- evaluate_string(opentree_df$p0_str$p0, params)
+v_s_init

@@ -1,0 +1,3 @@
+[2,"Loading required package: shiny\n"]
+[2,"\nListening on http://127.0.0.1:3522\ncreateTcpServer: address already in use\nError in .subset2(public_bind_env, \"initialize\")(...) : \n  Failed to create server\nCalls: sourceWithProgress ... startApp -> startServer -> <Anonymous> -> <Anonymous>\n"]
+[2,"Execution halted\n"]
