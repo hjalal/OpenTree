@@ -1,4 +1,4 @@
-# OpenTreep-kg
+# OpenTree 
 OpenTree is an R package developed with collaboration with DARTH that allows building decision trees interactively in R.  
 
 ## Getting started: 
