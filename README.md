@@ -1,4 +1,6 @@
 # OpenTree 
+An Open-Source package for interactively building decision trees and health economic evaluation models. 
+
 OpenTree is an R package developed with collaboration with DARTH that allows building decision trees interactively in R.  
 
 ## Getting started: 
