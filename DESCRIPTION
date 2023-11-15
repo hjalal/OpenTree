@@ -4,8 +4,7 @@ Title: Decision Tree pack
 Version: 0.1.0
 Author: Hawre Jalal
 Maintainer: The package maintainer <hjalal@uottawa.ca>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: OpenTree is an R package developed with collaboration with DARTH that allows building decision trees interactively in R.
 License: What license is it under?
 Imports:
   rstudioapi
